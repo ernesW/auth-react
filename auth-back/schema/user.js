@@ -55,4 +55,6 @@ UserSchema.methods.createRefreshToken =  async function() {
     }
 }
 
+// acabo de cambiar mongoose a Mongoose
+
 module.exports = mongoose.model('User', UserSchema);

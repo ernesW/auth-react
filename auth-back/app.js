@@ -25,13 +25,14 @@ app.use('/api/todos', authenticate, require('./routes/todos'));
 app.use('/api/refresh-token', require('./routes/refreshToken'));
 app.use('/api/signout', require('./routes/signout'));
 
-
 app.get('/', (req, res) => {
     res.send('Hello World');
-
 });
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
 
+app.get('/api', (req, res) => {
+    res.send('API is working');
+});

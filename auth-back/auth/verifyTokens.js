@@ -1,8 +1,7 @@
 const jwt = require('jsonwebtoken');
 
 function verifyAccessToken(token){
-    return jwt.verify(token, process.env.ACCESS_TOKEN_SECRE);
-
+    return jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
 }
 
 function verifyRefreshToken(token){

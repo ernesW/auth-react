@@ -1,4 +1,4 @@
-const { getTokenFromHeader } = require('../auth/getTokenFromHeader');
+const getTokenFromHeader = require('../auth/getTokenFromHeader');
 const Token = require('../schema/token');
 const { jsonResponse } = require('../lib/jsonResponse');
 const { verifyRefreshToken } = require('../auth/verifyTokens');
