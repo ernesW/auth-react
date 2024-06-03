@@ -9,21 +9,26 @@ interface PortalLayoutProps {
 export default function PortalLayout({ children }: PortalLayoutProps) {
   const auth = useAuth();
 
+  // Función para manejar el cierre de sesión
   async function handleSignOut(e: React.MouseEvent<HTMLAnchorElement>) {
     e.preventDefault();
 
     try {
+      // Realizar una petición DELETE a la API para cerrar la sesión
       const response = await fetch(`${API_URL}/signout`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
+           // Enviar el token de refresco en la cabecera de autorización
           Authorization: `Bearer ${auth.getRefreshToken()}`,
         },
       });
+      // Si la respuesta es OK, cerrar la sesión en el cliente
       if (response.ok) {
         auth.signOut();
       }
     } catch (error) {
+      // En caso de error, mostrarlo en la consola
       console.log(error);
     }
   }

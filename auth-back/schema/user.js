@@ -4,6 +4,8 @@ const { generateAccessToken, generateRefreshToken, } = require("../auth/generate
 const getUserInfo = require("../lib/getUserInfo");
 const Token = require("../schema/token");
 
+// Estructura de Usuarios para la base de datos
+
 const UserSchema = new mongoose.Schema({ 
     id: { type: Object},
     username: { type: String, required: true, unique: true },
@@ -11,6 +13,7 @@ const UserSchema = new mongoose.Schema({
     name: { type: String, required: true },
 });
 
+// Antes de guardar el usuario, si la contraseña es nueva o ha sido modificada, la encriptamos
 UserSchema.pre('save', function(next) { 
     if(this.isModified('password') || this.isNew) {
         const document = this;
@@ -28,21 +31,25 @@ UserSchema.pre('save', function(next) {
     }
 });
 
+//comprobar si el nombre de usuario ya existe
 UserSchema.methods.usernameExist = async function(username) {
     const result = await mongoose.model('User').find({ username });
     
     return result.length > 0;
 };
 
+//comprobar si la contraseña es correcta
 UserSchema.methods.comparePassword = async function(password, hash) {
     const same = bcrypt.compareSync(password, hash);
     return same;
 };
 
+//crear token de acceso
 UserSchema.methods.createAccessToken = function() {
     return generateAccessToken(getUserInfo(this));
 }
 
+//crear token de refresco y guardarlo en la base de datos
 UserSchema.methods.createRefreshToken =  async function() {
     const refreshToken = generateRefreshToken(getUserInfo(this));
     try {

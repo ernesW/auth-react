@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { API_URL } from "../auth/constants";
 import PortalLayout from "../layout/PortalLayout";
 
-
+// Definimos la interfaz para los objetos 'Todo'
 interface Todo {
   _id: string;
   title: string;
@@ -11,22 +11,29 @@ interface Todo {
   idUser: string;
 }
 
+// Definimos el componente 'Dashboard'
 export default function Dashboard() {
+  // Definimos el estado para los 'todos' y el 'title' del nuevo 'todo'
   const [todos, setTodos] = useState<Todo[]>([]);
   const [title, setTitle] = useState<string>("");
+  // Obtenemos el objeto 'auth' del proveedor de autenticación
   const auth = useAuth();
 
+  // Usamos 'useEffect' para cargar los 'todos' cuando el componente se monta
   useEffect(() => {
     loadTodos();
   }, []);
 
+  // Definimos la función 'handleSubmit' para manejar el envío del formulario
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     createTodo();
   }
 
+  // Definimos la función 'createTodo' para crear un nuevo 'todo'
   async function createTodo() {
     try {
+      // Hacemos una petición POST a la API para crear el 'todo'
       const response = await fetch(`${API_URL}/todos`, {
         method: "POST",
         headers: {
@@ -38,6 +45,7 @@ export default function Dashboard() {
         }),
       });
 
+      // Si la respuesta es exitosa, añadimos el nuevo 'todo' al estado
       if (response.ok) {
         const json = await response.json();
         setTodos([json, ...todos]);
@@ -47,8 +55,10 @@ export default function Dashboard() {
     } catch (error) {}
   }
 
+  // Definimos la función 'loadTodos' para cargar los 'todos' de la API
   async function loadTodos() {
     try {
+      // Hacemos una petición GET a la API para obtener los 'todos'
       const response = await fetch(`${API_URL}/todos`, {
         headers: {
           "Content-Type": "application/json",
@@ -56,6 +66,7 @@ export default function Dashboard() {
         },
       });
 
+      // Si la respuesta es exitosa, actualizamos el estado con los 'todos' obtenidos
       if (response.ok) {
         const json = await response.json();
         setTodos(json);
@@ -68,8 +79,10 @@ export default function Dashboard() {
     } catch (error) {}
   }
 
+  // Definimos la función 'deleteTodo' para eliminar un 'todo'
   async function deleteTodo(id: string) {
     try {
+      // Hacemos una petición DELETE a la API para eliminar el 'todo'
       const response = await fetch(`${API_URL}/todos/${id}`, {
         method: "DELETE",
         headers: {
@@ -78,8 +91,8 @@ export default function Dashboard() {
         },
       });
 
+      // Si la respuesta es exitosa, eliminamos el 'todo' del estado
       if (response.ok) {
-        // Elimina la tarea de la lista de tareas en el estado
         setTodos(todos.filter((todo) => todo._id !== id));
         console.log("Tarea eliminada");
       } else {
@@ -89,6 +102,7 @@ export default function Dashboard() {
     } catch (error) {}
   }
 
+  // Renderizamos el componente
   return (
     <PortalLayout>
       <div>
