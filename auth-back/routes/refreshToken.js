@@ -13,7 +13,7 @@ router.post('/', async (req, res) => {
         try {
             const found = await Token.findOne({token: refreshToken});
             if(!found){
-                res.status(401).send(jsonResponse(401, {error: "Unauthorized"}));
+                return res.status(401).send(jsonResponse(401, {error: "Unauthorized"}));
             }
 
             const payload = verifyRefreshToken(found.token);
@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
 
                 return res.status(200).send(jsonResponse(200, {accessToken}));
             } else {
-                res.status(401).send(jsonResponse(401, {error: "Unauthorized"}));
+                return res.status(401).send(jsonResponse(401, {error: "Unauthorized"}));
             }
 
         } catch (error) {
@@ -30,9 +30,8 @@ router.post('/', async (req, res) => {
         }
 
     } else {
-        res.status(401).send(jsonResponse(401, {error: "Unauthorized"}));
+        return res.status(401).send(jsonResponse(401, {error: "Unauthorized"}));
     }
-    res.send('refresh token');
 });
 
 module.exports = router;
