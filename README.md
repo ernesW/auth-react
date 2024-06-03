@@ -9,12 +9,12 @@ Me he ido guiando gracias a videos de YouTube y algunos repos de GitHub, he apre
 
 # Inizializar el proyecto
 
-1- Abrimos dos terminales y nos metemos a la carpeta del proyecto
+    1- Abrimos dos terminales y nos metemos a la carpeta del proyecto
 
-2- En una de ellas a auth-back y en la otra a auth-front
+    2- En una de ellas a auth-back y en la otra a auth-front
 
-3- En auth-back escribimos en la terminal: node .\app.js para conectarnos a la base de datos...
+    3- En auth-back escribimos en la terminal: node .\app.js para conectarnos a la base de datos...
 
-4- En auth-fornt deberia ser: npm run dev ,pero si nos diera algun error seguramente nos pida instalar vite ya que se pierde al descargarlo del gitHub hariamos entonces: npm install vite
+    4- En auth-fornt deberia ser: npm run dev ,pero si nos diera algun error seguramente nos pida instalar vite ya que se pierde al descargarlo del gitHub hariamos entonces: npm install vite
 
-5- Accedemos al enlace que nos da la parte del front y ya estariamos ante el proyecto
+    5- Accedemos al enlace que nos da la parte del front y ya estariamos ante el proyecto
