@@ -7,7 +7,7 @@ Aun asi voy a seguir trabajando en el por mi cuenta y actualizando poco a poco e
 
 Me he ido guiando gracias a videos de YouTube y algunos repos de GitHub, he aprendido muchos conceptos nuevos al crear este proyecto aunque es dificil acordarse de todo a la perfeccion siento que este trabajo me ha sido muy util a la hora del aprendizaje orientado a la WEB
 
-# Inizializar el proyecto
+# Inicializar el proyecto
 
     1- Abrimos dos terminales y nos metemos a la carpeta del proyecto
 
