@@ -3,7 +3,7 @@ Mi proyecto final trata de uun SignUp y LogIn para usuarios en el que he usuado 
 
 A medida de que he ido haciendo han ido saliendo errores que he podido ir arreglando, uno de los que mas me ha costado arreglar era la implementacion de el refreshToken porque se perdia en cuanto iniciaba sesion y si refrescaba la pestana se volvia al login pero lo he podido arreglar
 
-Aun asi voy a seguir trabajando en el por mi cuenta y actualizando poco a poco el modelo mejorande errores que surgan y aniandiendo nuevas funcionalidades y mas...
+Aun asi voy a seguir trabajando en el por mi cuenta y actualizando poco a poco el modelo mejorande errores que surgan y aniandiendo nuevas funcionalidades como la eliminacion de nuestro propio usuario de la base de datos y mas...
 
 Me he ido guiando gracias a videos de YouTube y algunos repos de GitHub, he aprendido muchos conceptos nuevos al crear este proyecto aunque es dificil acordarse de todo a la perfeccion siento que este trabajo me ha sido muy util a la hora del aprendizaje orientado a la WEB
 
